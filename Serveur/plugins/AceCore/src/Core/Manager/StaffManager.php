@@ -45,7 +45,7 @@ class StaffManager {
             $players->hidePlayer($player);
         }
         $teleport = VanillaItems::BLAZE_ROD()->setCustomName($this->itemsName["TELEPORT"]);
-        $game = VanillaItems::COMPASS()->setCustomName($this->itemsName["GAME"]);
+        $game = VanillaItems::CLOCK()->setCustomName($this->itemsName["GAME"]);
         $vanish = VanillaItems::LIME_DYE()->setCustomName($this->itemsName["VANISH"]);
         $freeze = VanillaItems::DIAMOND()->setCustomName($this->itemsName["FREEZE"]);
         $kick = VanillaItems::STICK()->setCustomName($this->itemsName["KICK"]);

@@ -3,6 +3,7 @@
 namespace Core\API;
 
 use Core\Core;
+use Core\Utils\Network;
 
 class ServerAPI {
     /**
@@ -283,6 +284,16 @@ class ServerAPI {
                 }
             }
         }
+        return $all;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNetworkCount(): int {
+        $all = 0;
+        $network = $this->plugin->getNetworkAPI()->getNetworkUtils();
+        foreach ($network->getNames() as $name => $port) $all += $this->getCount($port);
         return $all;
     }
 }

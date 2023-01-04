@@ -3,6 +3,7 @@
 namespace Core\API;
 
 use Core\Core;
+use Core\Utils\Network;
 
 class NetworkAPI {
     /**
@@ -150,5 +151,12 @@ class NetworkAPI {
             }
         }
         return $server;
+    }
+
+    /**
+     * @return Network
+     */
+    public function getNetworkUtils(): Network {
+        return new Network();
     }
 }
