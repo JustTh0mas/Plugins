@@ -31,7 +31,7 @@ class MySQLAPI {
      */
     public function addTables(): void {
         $MySQL = $this->getData();
-        $MySQL->query("CREATE TABLE IF NOT EXISTS gambler (name TEXT, rank TEXT, rank_label TEXT, perms VARCHAR(9999), lang VARCHAR(2), playtime INT, xp INT, level_xp INT, connect TEXT)");
+        $MySQL->query("CREATE TABLE IF NOT EXISTS gambler (name TEXT, rank TEXT, rank_label TEXT, lang VARCHAR(2), playtime INT, xp INT, level_xp INT, connect TEXT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS verif (name TEXT, ip TEXT, uuid TEXT, vpn TEXT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS economy (name TEXT, money INT, token INT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS ban (id INT, name TEXT, modo TEXT, ip TEXT, uuid TEXT, time_sec TEXT, reason TEXT)");

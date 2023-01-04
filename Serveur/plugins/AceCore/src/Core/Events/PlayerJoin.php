@@ -37,7 +37,8 @@ class PlayerJoin implements Listener {
                 $player->time[$name] = time();
                 $player->setJoin();
                 $this->plugin->getGamblerAPI()->setDefaultData($player);
-                $this->plugin->getGamblerAPI()->setConnect($name, "Lobby");
+                $this->plugin->getGamblerAPI()->setConnect($name, $this->plugin->getNetworkAPI()->getNetworkUtils()->getServer());
+                $this->plugin->getGamblerAPI()->addPermission($player);
                 $this->plugin->getVerifAPI()->setDefaultData($player);
                 $this->plugin->getEconomyAPI()->setDefaultData($player);
                 $this->plugin->getSettingsAPI()->setDefaultData($player);

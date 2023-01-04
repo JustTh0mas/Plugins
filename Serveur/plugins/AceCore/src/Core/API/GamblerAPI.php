@@ -40,10 +40,10 @@ class GamblerAPI {
         $MySQL = $this->plugin->getMySQLApi()->getData();
         if (!$this->exist($name)) {
             $MySQL->begin_transaction();
-            $stmt = $MySQL->prepare("INSERT INTO gambler (name, rank, rank_label, perms, lang, playtime, xp, level_xp, connect) VALUES (?, ?, '', '', ?, ?, ?, ?, ?)");
-            $rank = AcePlayer::RANK_PLAYER;
+            $stmt = $MySQL->prepare("INSERT INTO gambler (name, rank, rank_label, lang, playtime, xp, level_xp, connect) VALUES (?, ?, '', ?, ?, ?, ?, ?)");
+            $rank = AcePlayer::RANK["PLAYER"];
             $lang = $this->getCountry($player->getNetworkSession()->getIp());
-            $connect = 'Lobby';
+            $connect = $this->plugin->getNetworkAPI()->getNetworkUtils()->getServer();
             $playtime = 0;
             $xp = 0;
             $level = 0;
@@ -71,16 +71,15 @@ class GamblerAPI {
         $gambler = $stmt->get_result()->fetch_row();
         $MySQL->commit();
         $MySQL->close();
-        return is_null($gambler) ? [$name, 0, "", "", "fr", 0, 1, 0, "Lobby"] : $gambler;
+        return is_null($gambler) ? [$name, 0, "", "fr", 0, 1, 0, "Lobby"] : $gambler;
         /*
          * 1 = rank
          * 2 = rank_label
-         * 3 = perms
-         * 4 = lang
-         * 5 = playtime
-         * 6 = xp
-         * 7 = level_xp
-         * 8 = server
+         * 3 = lang
+         * 4 = playtime
+         * 5 = xp
+         * 6 = level_xp
+         * 7 = server
          */
     }
 
@@ -108,6 +107,7 @@ class GamblerAPI {
             $stmt->bind_param("ss", $rank, $name);
             $stmt->execute();
             $MySQL->commit();
+            $this->plugin->getRequestAPI()->add("SET_RANK", array($name));
             return true;
         }
         $MySQL->close();
@@ -146,126 +146,12 @@ class GamblerAPI {
 
     /**
      * @param string $name
-     * @param string $permission
-     * @return bool
-     */
-    public function hasPermission(string $name, string $permission): bool {
-        $name = strtolower($name);
-        $MySQL = $this->plugin->getMySQLApi()->getData();
-        $MySQL->begin_transaction();
-        $stmt = $MySQL->prepare("SELECT perms FROM gambler WHERE name = ?");
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $permissions = explode(',', $row['perms']);
-            if (in_array($permission, $permissions)) {
-                $MySQL->commit();
-                $MySQL->close();
-                return true;
-            }
-        }
-        $MySQL->commit();
-        $MySQL->close();
-        return false;
-    }
-
-    /**
-     * @param string $name
-     * @param array $permissions
-     * @return bool
-     */
-    public function addPermissions(string $name, array $permissions): bool {
-        $name = strtolower($name);
-        $MySQL = $this->plugin->getMySQLApi()->getData();
-        $MySQL->begin_transaction();
-        $stmt = $MySQL->prepare("SELECT perms FROM gambler WHERE name = ?");
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $currentPermissions = $row['perms'] !== "" ? explode(',', $row['perms']) : [];
-            $newPermissions = array_merge($currentPermissions, $permissions);
-            $newPermissionsString = implode(',', $newPermissions);
-            $stmt = $MySQL->prepare("UPDATE gambler SET perms = ? WHERE name = ?");
-            $stmt->bind_param("ss", $newPermissionsString, $name);
-            $stmt->execute();
-            $MySQL->commit();
-            $MySQL->close();
-            return true;
-        }
-        $MySQL->commit();
-        $MySQL->close();
-        return false;
-    }
-
-    /**
-     * @param string $name
-     * @param array $permissions
-     * @return bool
-     */
-    public function removePermissions(string $name, array $permissions): bool {
-        $name = strtolower($name);
-        $MySQL = $this->plugin->getMySQLApi()->getData();
-        $MySQL->begin_transaction();
-        $stmt = $MySQL->prepare("SELECT perms FROM gambler WHERE name = ?");
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $currentPermissions = explode(',', $row['perms']);
-            $newPermissions = array_diff($currentPermissions, $permissions);
-            $newPermissionsString = implode(',', $newPermissions);
-            $stmt = $MySQL->prepare("UPDATE gambler SET perms = ? WHERE name = ?");
-            $stmt->bind_param("ss", $newPermissionsString, $name);
-            $stmt->execute();
-            $MySQL->commit();
-            $MySQL->close();
-            return true;
-        }
-        $MySQL->commit();
-        $MySQL->close();
-        return false;
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    public function getAllPermissions(string $name): string {
-        $name = strtolower($name);
-        $MySQL = $this->plugin->getMySQLApi()->getData();
-        $stmt = $MySQL->prepare("SELECT perms FROM gambler WHERE name = ?");
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $permissions = $row['perms'];
-            $permissions = explode(',', $permissions);
-            $formattedPermissions = '';
-            foreach ($permissions as $permission) {
-                $formattedPermissions .= "§6" . $permission . "§f, ";
-            }
-            $formattedPermissions = rtrim($formattedPermissions, ', ');
-        } else {
-            $formattedPermissions = 'Aucune permission';
-        }
-        $MySQL->close();
-        return $formattedPermissions;
-    }
-
-    /**
-     * @param string $name
      * @return string
      */
     public function getLang(string $name): string {
         $name = strtolower($name);
         $data = $this->get($name);
-        return $data[4];
+        return $data[3];
     }
 
     /**
@@ -295,7 +181,7 @@ class GamblerAPI {
     public function getPlaytime(string $name): int {
         $name = strtolower($name);
         $data = $this->get($name);
-        return $data[5];
+        return $data[4];
     }
 
     /**
@@ -326,7 +212,7 @@ class GamblerAPI {
     public function getXps(string $name): int {
         $name = strtolower($name);
         $data = $this->get($name);
-        return $data[6];
+        return $data[5];
     }
 
     /**
@@ -357,7 +243,7 @@ class GamblerAPI {
     public function getLevelXp(string $name): int {
         $name = strtolower($name);
         $data = $this->get($name);
-        return $data[7];
+        return $data[6];
     }
 
     /**
@@ -387,7 +273,7 @@ class GamblerAPI {
     public function getConnect(string $name): string {
         $name = strtolower($name);
         $data = $this->get($name);
-        return $data[8];
+        return $data[7];
     }
 
     /**
@@ -408,6 +294,19 @@ class GamblerAPI {
         }
         $MySQL->close();
         return false;
+    }
+
+    /**
+     * @param AcePlayer $player
+     * @return void
+     */
+    public function addPermission(AcePlayer $player): void {
+        $permissions = AcePlayer::PERMISSIONS[$player->getRank()];
+        foreach ($permissions as $permission) {
+            $attachement = $player->addAttachment($this->plugin);
+            $attachement->setPermission($permission, true);
+            $player->addAttachment($this->plugin, $permission);
+        }
     }
 
     /**

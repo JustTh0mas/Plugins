@@ -366,13 +366,13 @@ class CosmeticsAPI {
      */
     public function getCosmeticsByRank(int $rank): array {
         switch ($rank) {
-            case AcePlayer::RANK_YOUTUBER:
+            case AcePlayer::RANK["YOUTUBER"]:
                 $cosmetics = [];
                 foreach ($this->getSkins() as $cosmetic) $cosmetics[] = $cosmetic;
                 foreach ($this->getCosmetics()["nick"] as $cosmetic) $cosmetics[] = $cosmetic;
                 return $cosmetics;
-            case AcePlayer::RANK_VIP:
-            case AcePlayer::RANK_HELPER:
+            case AcePlayer::RANK["VIP"]:
+            case AcePlayer::RANK["HELPER"]:
                 $cosmetics = [];
                 foreach ($this->getSkins() as $cosmetic) $cosmetics[] = $cosmetic;
                 foreach ($this->getCosmetics()["nick"] as $cosmetic) $cosmetics[] = $cosmetic;
@@ -391,7 +391,7 @@ class CosmeticsAPI {
         $name = strtolower($name);
         $rank = $this->plugin->getGamblerAPI()->getRank($name);
         $cosmetics = $this->getCosmeticsByRank($rank);
-        if ($rank >= AcePlayer::RANK_YOUTUBER) {
+        if ($rank >= AcePlayer::RANK["YOUTUBER"]) {
             if (count($cosmetics) > 0) {
                 foreach ($cosmetics as $cosmetic) {
                     if (!$this->hasBuy($name, $cosmetic)) $this->addBuy($name, $cosmetic); return true;

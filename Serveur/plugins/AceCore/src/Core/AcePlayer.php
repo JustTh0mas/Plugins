@@ -15,29 +15,42 @@ use pocketmine\Server;
 use pocketmine\utils\TextFormat as TF;
 
 class AcePlayer extends Player {
-
-    const RANK_PLAYER = 0;
-    const RANK_YOUTUBER = 1;
-    const RANK_VIP = 2;
-    const RANK_VIP_PLUS = 3;
-    const RANK_HERO = 4;
-    const RANK_CUSTOM = 5;
-    const RANK_HELPER = 6;
-    const RANK_BUILDER = 7;
-    const RANK_MOD = 8;
-    const RANK_SUP_MOD = 9;
-    const RANK_OWNER = 10;
     const RANK = [
-        self::RANK_PLAYER => "",
-        self::RANK_YOUTUBER => TF::RED . "Youtu" . TF::WHITE. "beur" . TF::RESET,
-        self::RANK_VIP => TF::YELLOW . "VIP" . TF::RESET,
-        self::RANK_VIP_PLUS => TF::GOLD . "VIP+" . TF::RESET,
-        self::RANK_HERO => TF::GREEN . "Héro" . TF::RESET,
-        self::RANK_CUSTOM => TF::BLACK . "Cu" . TF::YELLOW . "st" . TF::DARK_RED . "om" . TF::RESET,
-        self::RANK_HELPER => TF::GREEN . "Guide" . TF::RESET,
-        self::RANK_MOD => TF::RED . "Modo" . TF::RESET,
-        self::RANK_SUP_MOD => TF::DARK_AQUA . "Super-Modo". TF::RESET,
-        self::RANK_OWNER => TF::AQUA . "Admin" . TF::RESET,
+        "PLAYER" => 0,
+        "YOUTUBER" => 1,
+        "VIP" => 2,
+        "VIP+" => 3,
+        "HERO" => 4,
+        "CUSTOM" => 5,
+        "HELPER" => 6,
+        "BUILDER" => 7,
+        "MODO" => 8,
+        "SUP_MODO" => 9,
+        "OWNER" => 10,
+    ];
+    const RANK_LABEL = [
+        self::RANK["PLAYER"] => "",
+        self::RANK["YOUTUBER"] => TF::RED . "Youtu" . TF::WHITE. "beur" . TF::RESET,
+        self::RANK["VIP"] => TF::YELLOW . "VIP" . TF::RESET,
+        self::RANK["VIP+"] => TF::GOLD . "VIP+" . TF::RESET,
+        self::RANK["HERO"] => TF::GREEN . "Héro" . TF::RESET,
+        self::RANK["CUSTOM"] => TF::BLACK . "Cu" . TF::YELLOW . "st" . TF::DARK_RED . "om" . TF::RESET,
+        self::RANK["HELPER"] => TF::GREEN . "Guide" . TF::RESET,
+        self::RANK["MODO"] => TF::RED . "Modo" . TF::RESET,
+        self::RANK["SUP_MODO"] => TF::DARK_AQUA . "Super-Modo". TF::RESET,
+        self::RANK["OWNER"] => TF::AQUA . "Admin" . TF::RESET,
+    ];
+    const PERMISSIONS = [
+        self::RANK["PLAYER"] => [],
+        self::RANK["YOUTUBER"] => ["youtuber"],
+        self::RANK["VIP"] => ["youtuber", "vip"],
+        self::RANK["VIP+"] => ["youtuber", "vip", "vip+"],
+        self::RANK["HERO"] => ["youtuber", "vip", "vip+", "hero"],
+        self::RANK["CUSTOM"] => ["youtuber", "vip", "vip+", "hero", "custom"],
+        self::RANK["HELPER"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper"],
+        self::RANK["MODO"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper", "modo"],
+        self::RANK["SUP_MODO"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper", "modo", "sup_modo"],
+        self::RANK["OWNER"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper", "modo", "sup_modo", "owner"],
     ];
     /**
      * @var bool
@@ -172,7 +185,7 @@ class AcePlayer extends Player {
      * @return bool
      */
     public function isStaff(): bool {
-        if ($this->getRank() >= self::RANK_HELPER and $this->getRank() <= self::RANK_OWNER) return true;
+        if ($this->getRank() >= self::RANK["HELPER"] and $this->getRank() <= self::RANK["OWNER"]) return true;
         return false;
     }
 
@@ -180,7 +193,7 @@ class AcePlayer extends Player {
      * @return bool
      */
     public function isVip(): bool {
-        if ($this->getRank() >= self::RANK_YOUTUBER and $this->getRank() <= self::RANK_OWNER) return true;
+        if ($this->getRank() >= self::RANK["YOUTUBER"] and $this->getRank() <= self::RANK["OWNER"]) return true;
         return false;
     }
 
@@ -217,7 +230,7 @@ class AcePlayer extends Player {
      * @return string
      */
     public function getRankPrefix(): string {
-        return self::RANK[$this->getRank()];
+        return self::RANK_LABEL[$this->getRank()];
     }
 
     /**
@@ -263,37 +276,6 @@ class AcePlayer extends Player {
      */
     public function addXps(int $xp): bool {
         return $this->plugin->getGamblerAPI()->addXps($this->getName(), $xp);
-    }
-
-    /**
-     * @param $name
-     * @return bool
-     */
-    public function hasPermission($name): bool {
-        return $this->plugin->getGamblerAPI()->hasPermission($this->getName(), $name);
-    }
-
-    /**
-     * @param array $permissions
-     * @return bool
-     */
-    public function addPermissions(array $permissions): bool {
-        return $this->plugin->getGamblerAPI()->addPermissions($this->getName(), $permissions);
-    }
-
-    /**
-     * @param array $permission
-     * @return bool
-     */
-    public function removePermissions(array $permission): bool {
-        return $this->plugin->getGamblerAPI()->removePermissions($this->getName(), $permission);
-    }
-
-    /**
-     * @return string
-     */
-    public function getAllPermissions(): string {
-        return $this->plugin->getGamblerAPI()->getAllPermissions($this->getName());
     }
 
     /**

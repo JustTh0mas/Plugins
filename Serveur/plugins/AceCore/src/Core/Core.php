@@ -10,6 +10,7 @@ use Core\API\MuteAPI;
 use Core\API\MySQLAPI;
 use Core\API\GamblerAPI;
 use Core\API\NetworkAPI;
+use Core\API\RequestAPI;
 use Core\API\ServerAPI;
 use Core\API\SettingsAPI;
 use Core\API\StaffAPI;
@@ -18,6 +19,7 @@ use Core\Events\PlayerCreation;
 use Core\Events\PlayerJoin;
 use Core\Events\PlayerLogin;
 use Core\Events\PlayerQuit;
+use Core\Utils\Socket;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase {
@@ -57,7 +59,7 @@ class Core extends PluginBase {
      * @return void
      */
     public function onDisable(): void {
-        foreach ($this->getServer()->getOnlinePlayers() as $players) $players->transfer("127.0.0.1", 19132);
+        foreach ($this->getServer()->getOnlinePlayers() as $players) $players->transfer("185.157.247.59", 19132);
     }
 
     /**
@@ -67,6 +69,13 @@ class Core extends PluginBase {
         new PlayerCreation();
         new PlayerJoin();
         new PlayerQuit();
+    }
+
+    /**
+     * @return Socket
+     */
+    public function getSocket(): Socket {
+        return new Socket();
     }
 
     /**
@@ -165,6 +174,13 @@ class Core extends PluginBase {
      */
     public function getNetworkAPI(): NetworkAPI {
         return new NetworkAPI();
+    }
+
+    /**
+     * @return RequestAPI
+     */
+    public function getRequestAPI(): RequestAPI {
+        return new RequestAPI();
     }
 
 }
