@@ -55,7 +55,6 @@ class ServerAPI {
             $stmt->bind_param("sss", $count, $list, $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
@@ -145,7 +144,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
             return true;
         } else {
             $MySQL->begin_transaction();
@@ -153,7 +151,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
@@ -171,7 +168,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
             return true;
         } else {
             $MySQL->begin_transaction();
@@ -179,7 +175,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
@@ -205,7 +200,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
@@ -231,7 +225,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
