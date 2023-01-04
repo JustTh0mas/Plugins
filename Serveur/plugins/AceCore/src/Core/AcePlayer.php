@@ -52,37 +52,23 @@ class AcePlayer extends Player {
         self::RANK["SUP_MODO"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper", "modo", "sup_modo"],
         self::RANK["OWNER"] => ["youtuber", "vip", "vip+", "hero", "custom", "helper", "modo", "sup_modo", "owner"],
     ];
-    /**
-     * @var bool
-     */
+    /** @var bool  */
     public bool $join = false;
-    /**
-     * @var bool
-     */
+    /** @var bool  */
     public bool $cosmetics = true;
-    /**
-     * @var string|bool
-     */
+    /** @var mixed|bool  */
     public mixed $nick = false;
-    /**
-     * @var string|bool
-     */
+    /** @var mixed|bool  */
     public mixed $kdm = false;
-    /**
-     * @var string|bool
-     */
+    /** @var mixed|bool  */
     public mixed $tag = false;
-    /**
-     * @var bool
-     */
+    /** @var bool  */
     public bool $transfer = false;
-    /**
-     * @var array
-     */
+    /** @var mixed */
+    private mixed $interact;
+    /** @var array  */
     public array $time = [];
-    /**
-     * @var Core
-     */
+    /** @var Core  */
     private Core $plugin;
 
     /**
@@ -359,6 +345,21 @@ class AcePlayer extends Player {
      */
     public function reduceToken(int $amount): bool {
         return $this->plugin->getEconomyAPI()->reduceToken($this->getName(), $amount);
+    }
+
+    /**
+     * @return bool
+     */
+    public function interact(): bool {
+        $time = floatval(microtime(true));
+        if (!is_null($this->interact)) {
+            if ($time - $this->interact <= 0.1) {
+                $this->interact = $time;
+                return false;
+            }
+        }
+        $this->interact = $time;
+        return true;
     }
 
     /**

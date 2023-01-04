@@ -7,8 +7,8 @@ use Core\Tasks\Async\DataBaseAsyncTask;
 
 class MySQLAPI {
     const HOST = "127.0.0.1";
-    const USER = "root";
-    const PASSWORD = '';
+    const USER = "ace";
+    const PASSWORD = '$1$B1F5ZSk4$WO7Njv7iPnjlqQC6xI6uf.';
     const BASE = "ace";
 
     /**
