@@ -15,7 +15,7 @@ use Core\API\ServerAPI;
 use Core\API\SettingsAPI;
 use Core\API\StaffAPI;
 use Core\API\VerifAPI;
-use Core\Commands\Commands\Staff\StaffCommand;
+use Core\Commands\Staff\StaffCommand;
 use Core\Events\PlayerCreation;
 use Core\Events\PlayerJoin;
 use Core\Events\PlayerLogin;

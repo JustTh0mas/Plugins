@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Commands\Commands\Staff;
+namespace Core\Commands\Staff;
 
 use Core\AcePlayer;
 use Core\Core;
