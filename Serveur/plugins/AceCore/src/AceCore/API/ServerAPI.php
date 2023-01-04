@@ -38,7 +38,7 @@ class ServerAPI {
      */
     public function set(int $port, int $count, array $players): bool {
         $play = [];
-        foreach ($players as $player) if ($player->isOnline()) $play = strtolower($player->getName());
+        foreach ($players as $player) if ($player->isOnline()) $play[] = strtolower($player->getName());
         if (count($play) == 0) $list = "-"; else $list = implode(",", $play);
         $MySQL = $this->plugin->getMySQLApi()->getData();
         if (!$this->exist($port)) {
@@ -128,7 +128,6 @@ class ServerAPI {
             $stmt->bind_param("s", $port);
             $stmt->execute();
             $MySQL->commit();
-            $MySQL->close();
         }
         $MySQL->close();
         return false;
