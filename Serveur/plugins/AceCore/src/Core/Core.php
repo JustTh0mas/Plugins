@@ -15,6 +15,7 @@ use Core\API\ServerAPI;
 use Core\API\SettingsAPI;
 use Core\API\StaffAPI;
 use Core\API\VerifAPI;
+use Core\Commands\Commands\Staff\StaffCommand;
 use Core\Events\PlayerCreation;
 use Core\Events\PlayerJoin;
 use Core\Events\PlayerLogin;
@@ -52,6 +53,7 @@ class Core extends PluginBase {
         $this->getLogger()->info(Prefix::SERVER . "Core as been enabled !");
         $this->getMySQLApi()->addTables();
         $this->onLoadEvents();
+        $this->onLoadCommands();
         $this->getServerAPI()->start($this->getServer()->getPort());
     }
 
@@ -69,6 +71,12 @@ class Core extends PluginBase {
         new PlayerCreation();
         new PlayerJoin();
         new PlayerQuit();
+    }
+
+    private function onLoadCommands(): void {
+        $this->getServer()->getCommandMap()->registerAll("ace", [
+            new StaffCommand(),
+        ]);
     }
 
     /**
