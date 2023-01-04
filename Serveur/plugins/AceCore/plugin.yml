@@ -1,0 +1,5 @@
+name: AceCore
+author: JustThomas
+version: 1.0
+api: 4.0.0
+main: AceCore\Core
