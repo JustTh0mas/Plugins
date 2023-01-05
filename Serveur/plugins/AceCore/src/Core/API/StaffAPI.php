@@ -38,8 +38,21 @@ class StaffAPI {
      */
     public function add(AcePlayer $player): bool {
         $name = strtolower($player->getName());
-        $inventory = base64_encode(serialize($player->getInventory()->getContents(true)));
-        $armorInventory = base64_encode(serialize($player->getArmorInventory()->getContents(true)));
+        $inventoryContent = $player->getInventory()->getContents();
+        $armorInventoryContent = $player->getArmorInventory()->getContents();
+        $inventory = [];
+        $armorInventory = [];
+        foreach ($inventoryContent as $slot => $item) $inventory[$slot] = $item;
+        foreach ($armorInventoryContent as $slot => $item) {
+            switch ($slot) {
+                case 0: $armorInventory["helmet"] = $item; break;
+                case 1: $armorInventory["chestplate"] = $item; break;
+                case 2: $armorInventory["leggings"] = $item; break;
+                case 3: $armorInventory["boots"] = $item; break;
+            }
+        }
+        $inventory = base64_encode(serialize($inventory));
+        $armorInventory = base64_encode(serialize($armorInventory));
         $MySQL = $this->plugin->getMySQLApi()->getData();
         if (!$this->exist($name)) {
             $MySQL->begin_transaction();
@@ -77,8 +90,21 @@ class StaffAPI {
      */
     public function update(AcePlayer $player): bool {
         $name = strtolower($player->getName());
-        $inventory = base64_encode(serialize($player->getInventory()->getContents(true)));
-        $armorInventory = base64_encode(serialize($player->getArmorInventory()->getContents(true)));
+        $inventoryContent = $player->getInventory()->getContents();
+        $armorInventoryContent = $player->getArmorInventory()->getContents();
+        $inventory = [];
+        $armorInventory = [];
+        foreach ($inventoryContent as $slot => $item) $inventory[$slot] = $item;
+        foreach ($armorInventoryContent as $slot => $item) {
+            switch ($slot) {
+                case 0: $armorInventory["helmet"] = $item; break;
+                case 1: $armorInventory["chestplate"] = $item; break;
+                case 2: $armorInventory["leggings"] = $item; break;
+                case 3: $armorInventory["boots"] = $item; break;
+            }
+        }
+        $inventory = base64_encode(serialize($inventory));
+        $armorInventory = base64_encode(serialize($armorInventory));
         $MySQL = $this->plugin->getMySQLApi()->getData();
         if ($this->exist($name)) {
             $MySQL->begin_transaction();
@@ -100,11 +126,26 @@ class StaffAPI {
         $name = strtolower($name);
         if ($this->exist($name)) {
             $array = $this->get($name);
-            $inventory = unserialize(base64_decode($array["inventory"]));
-            $armorInventory = unserialize(base64_decode($array["armor"]));
+            $inventory = unserialize(base64_decode($array[2]));
+            $armorInventory = unserialize(base64_decode($array[3]));
             return [$inventory, $armorInventory];
         }
         return [[], []];
+    }
+
+    /**
+     * @param AcePlayer $player
+     * @return void
+     */
+    public function restoreInventory(AcePlayer $player): void {
+        $name = strtolower($player->getName());
+        $inventory = $this->getInventories($name)[0];
+        $armorInventory = $this->getInventories($name)[1];
+        foreach ($inventory as $slot => $item) $player->getInventory()->setItem($slot, $item);
+        if (isset($armorInventory["helmet"])) $player->getArmorInventory()->setHelmet($armorInventory["helmet"]);
+        if (isset($armorInventory["chestplate"])) $player->getArmorInventory()->setChestplate($armorInventory["chestplate"]);
+        if (isset($armorInventory["leggings"])) $player->getArmorInventory()->setLeggings($armorInventory["leggings"]);
+        if (isset($armorInventory["boots"])) $player->getArmorInventory()->setBoots($armorInventory["boots"]);
     }
 
     /**

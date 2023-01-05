@@ -164,7 +164,7 @@ class AcePlayer extends Player {
      */
     public function setCosmetics(bool $bool = false): void {
         $this->cosmetics = $bool;
-        if (!$this->isCosmetics()) $this->plugin->getSettingsAPI()->getManager()->removeAll($this);
+        if (!$this->isCosmetics()) $this->plugin->getCosmeticsAPI()->getManager()->removeAll($this);
     }
 
     /**

@@ -8,6 +8,8 @@ use pocketmine\item\VanillaItems;
 use pocketmine\network\mcpe\convert\SkinAdapterSingleton;
 use pocketmine\network\mcpe\protocol\PlayerListPacket;
 use pocketmine\network\mcpe\protocol\types\PlayerListEntry;
+use pocketmine\player\GameMode;
+use pocketmine\utils\TextFormat as TF;
 
 class StaffManager {
     /**
@@ -37,10 +39,11 @@ class StaffManager {
      * @return void
      */
     public function set(AcePlayer $player): void {
-        $player->setGamemode(1);
+        $player->setGamemode(GameMode::CREATIVE());
         $player->setCosmetics();
+        $player->setSilent(true);
         $this->plugin->getCosmeticsAPI()->getManager()->removeAll($player);
-        $this->plugin->getServer()->removePlayerListData($player->getUniqueId());
+        $player->getServer()->removeOnlinePlayer($player);
         foreach ($this->plugin->getServer()->getOnlinePlayers() as $players) {
             $players->hidePlayer($player);
         }
@@ -67,13 +70,13 @@ class StaffManager {
      * @return void
      */
     public function remove(AcePlayer $player): void {
-        $inventory = $this->plugin->getStaffAPI()->getInventories($player->getName());
-        $player->setGamemode(2);
+        $player->setGamemode(GameMode::ADVENTURE());
+        $player->setSilent(false);
         $player->setCosmetics(true);
-        $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
-        $player->getInventory()->setContents($inventory[0]);
-        $player->getArmorInventory()->setContents($inventory[1]);
+        $player->getInventory()->clearAll();
+        $player->getServer()->addOnlinePlayer($player);
+        $this->plugin->getStaffAPI()->restoreInventory($player);
         $this->plugin->getCosmeticsAPI()->getManager()->addAll($player);
         $entry = PlayerListEntry::createAdditionEntry($player->getUniqueId(), $player->getId(), $player->getDisplayName(), SkinAdapterSingleton::get()->toSkinData($player->getSkin()), $player->getXuid());
         $pk = new PlayerListPacket();
@@ -81,9 +84,8 @@ class StaffManager {
         $pk->type = PlayerListPacket::TYPE_ADD;
         foreach ($this->plugin->getServer()->getOnlinePlayers() as $players) {
             $players->showPlayer($player);
-            $players->sendDataPacket($pk);
+            $players->getNetworkSession()->sendDataPacket($pk);
         }
-        $this->plugin->getServer()->sendFullPlayerListData($player);
     }
 
     public function setAllVanish() {
@@ -99,7 +101,7 @@ class StaffManager {
                         $pk->type = PlayerListPacket::TYPE_REMOVE;
                         foreach ($this->plugin->getServer()->getOnlinePlayers() as $players) {
                             $players->hidePlayer($player);
-                            $players->sendDataPacket($pk);
+                            $players->getNetworkSession()->sendDataPacket($pk);
                         }
                     }
                 }

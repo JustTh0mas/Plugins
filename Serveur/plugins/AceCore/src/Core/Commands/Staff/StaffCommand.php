@@ -27,16 +27,16 @@ class StaffCommand extends Command {
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         if ($this->plugin->isEnabled()) {
             if ($sender instanceof AcePlayer) {
-                if ($sender->isOp() or $sender->hasPermission("modo")) {
+                if ($sender->hasPermission("modo")) {
                     $name = $sender->getName();
                     $staff = $this->plugin->getStaffAPI();
-                    if ($staff->exist($name)) {
+                    if (!$staff->exist($name)) {
                         $staff->add($sender);
                         $staff->getManager()->set($sender);
                         $sender->sendMessage(Prefix::SERVER . "Vous avez activé le staff mode !");
                     } else {
-                        $staff->del($name);
                         $staff->getManager()->remove($sender);
+                        $staff->del($name);
                         $sender->sendMessage(Prefix::SERVER . "Vous avez désactivé le staff mode !");
                     }
                 } else {
