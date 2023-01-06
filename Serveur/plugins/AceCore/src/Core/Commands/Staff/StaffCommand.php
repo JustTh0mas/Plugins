@@ -39,6 +39,7 @@ class StaffCommand extends Command {
                         $staff->del($name);
                         $sender->sendMessage(Prefix::SERVER . "Vous avez désactivé le staff mode !");
                     }
+                    $staff->setVanish($name);
                 } else {
                     $sender->sendMessage($sender->messageToTranslate("PERM"));
                 }
