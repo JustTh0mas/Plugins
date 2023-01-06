@@ -31,6 +31,8 @@ class PlayerQuit implements Listener {
                 $player->addPlaytime(time() - $player->time[$name]);
                 unset($player->time[$name]);
             }
+            $callback = DataPacketReceive::$callbacks[$player->getId()];
+            unset($callback);
         }
     }
 }

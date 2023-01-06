@@ -16,8 +16,12 @@ use Core\API\SettingsAPI;
 use Core\API\StaffAPI;
 use Core\API\VerifAPI;
 use Core\Commands\Staff\StaffCommand;
+use Core\Events\DataPacketReceive;
+use Core\Events\DataPacketSend;
+use Core\Events\PlayerCheat;
 use Core\Events\PlayerCreation;
 use Core\Events\PlayerJoin;
+use Core\Events\PlayerKick;
 use Core\Events\PlayerLogin;
 use Core\Events\PlayerQuit;
 use Core\Utils\Socket;
@@ -71,6 +75,10 @@ class Core extends PluginBase {
         new PlayerCreation();
         new PlayerJoin();
         new PlayerQuit();
+        new PlayerKick();
+        new PlayerCheat();
+        new DataPacketReceive();
+        new DataPacketSend();
     }
 
     private function onLoadCommands(): void {
