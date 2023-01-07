@@ -5,9 +5,7 @@ namespace AceCore\src\Core\API;
 use AceCore\src\Core\Core;
 
 class API {
-    /**
-     * @var Core
-     */
+    /** @var Core */
     private Core $plugin;
 
     public function __construct() {
