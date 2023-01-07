@@ -12,7 +12,7 @@ class French {
     public array $translates = [
         "ERROR" => Prefix::ERROR . TF::RED . "Il y a eu un problème avec la traduction du message",
         "PERM" => Prefix::SERVER . TF::RED . "Vous n'avez pas la permission d'utiliser cette commande !",
-        "USAGE" => Prefix::SERVER . TF::WHITE . "%",
+        "USAGE" => Prefix::SERVER . TF::WHITE . "Usage : %",
         "CONSOLE" => Prefix::SERVER . TF::RED . "Seul les joueurs peuvent exécuter cette commande !",
         "YES" => "Oui",
         "NO" => "Non",
