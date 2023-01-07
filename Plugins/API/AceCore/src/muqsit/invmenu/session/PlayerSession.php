@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\session;
+namespace muqsit\invmenu\session;
 
-use AceCore\src\muqsit\invmenu\session\network\PlayerNetwork;
+use muqsit\invmenu\session\network\PlayerNetwork;
 use Closure;
 use pocketmine\player\Player;
 use function spl_object_id;

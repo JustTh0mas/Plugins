@@ -1,15 +1,15 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Manager\CosmeticsManager;
-use AceCore\src\Core\Manager\KDMManager;
-use AceCore\src\Core\Manager\NickManager;
-use AceCore\src\Core\Manager\PetsManager;
-use AceCore\src\Core\Manager\SkinManager;
-use AceCore\src\Core\Manager\TagsManager;
+use Core\AcePlayer;
+use Core\Core;
+use Core\Manager\CosmeticsManager;
+use Core\Manager\KDMManager;
+use Core\Manager\NickManager;
+use Core\Manager\PetsManager;
+use Core\Manager\SkinManager;
+use Core\Manager\TagsManager;
 
 class CosmeticsAPI {
     /**

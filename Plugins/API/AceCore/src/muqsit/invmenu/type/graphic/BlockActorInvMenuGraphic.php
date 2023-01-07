@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\graphic;
+namespace muqsit\invmenu\type\graphic;
 
-use AceCore\src\muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
 use pocketmine\block\Block;
 use pocketmine\block\tile\Nameable;
 use pocketmine\block\tile\Tile;

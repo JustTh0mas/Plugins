@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\Core;
+use Core\Core;
 
 class  RequestAPI {
     /**

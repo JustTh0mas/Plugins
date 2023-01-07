@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\CreateServer;
+namespace CreateServer;
 
-use AceCore\src\Core\Core;
-use AceCore\src\CreateServer\Async\CopyAsyncTask;
+use Core\Core;
+use CreateServer\Async\CopyAsyncTask;
 
 class CreateServer {
     const USER = "/home/ace/";

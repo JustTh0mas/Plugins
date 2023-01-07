@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\session;
+namespace muqsit\invmenu\session;
 
-use AceCore\src\muqsit\invmenu\session\network\handler\PlayerNetworkHandlerRegistry;
-use AceCore\src\muqsit\invmenu\session\network\PlayerNetwork;
+use muqsit\invmenu\session\network\handler\PlayerNetworkHandlerRegistry;
+use muqsit\invmenu\session\network\PlayerNetwork;
 use pocketmine\event\EventPriority;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerQuitEvent;

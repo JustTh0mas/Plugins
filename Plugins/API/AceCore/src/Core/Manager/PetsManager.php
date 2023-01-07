@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\Manager;
+namespace Core\Manager;
 
-use AceCore\src\Core\Core;
+use Core\Core;
 
 class PetsManager {
     /**

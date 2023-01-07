@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu;
+namespace muqsit\invmenu;
 
-use AceCore\src\muqsit\invmenu\session\network\PlayerNetwork;
-use AceCore\src\muqsit\invmenu\session\PlayerManager;
+use muqsit\invmenu\session\network\PlayerNetwork;
+use muqsit\invmenu\session\PlayerManager;
 use pocketmine\event\inventory\InventoryCloseEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\Listener;

@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\Manager;
+namespace Core\Manager;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
+use Core\AcePlayer;
+use Core\Core;
 
 class CosmeticsManager {
     /**

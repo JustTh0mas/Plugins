@@ -1,10 +1,10 @@
 <?php
 
-namespace AceCore\src\Core\Commands\Staff;
+namespace Core\Commands\Staff;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Prefix;
+use Core\AcePlayer;
+use Core\Core;
+use Core\Prefix;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 

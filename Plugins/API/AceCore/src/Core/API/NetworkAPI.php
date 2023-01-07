@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Utils\Network;
+use Core\Core;
+use Core\Utils\Network;
 
 class NetworkAPI {
     /**

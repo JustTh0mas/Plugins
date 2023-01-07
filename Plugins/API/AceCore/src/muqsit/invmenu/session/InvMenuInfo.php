@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\session;
+namespace muqsit\invmenu\session;
 
-use AceCore\src\muqsit\invmenu\InvMenu;
-use AceCore\src\muqsit\invmenu\type\graphic\InvMenuGraphic;
+use muqsit\invmenu\InvMenu;
+use muqsit\invmenu\type\graphic\InvMenuGraphic;
 
 final class InvMenuInfo{
 

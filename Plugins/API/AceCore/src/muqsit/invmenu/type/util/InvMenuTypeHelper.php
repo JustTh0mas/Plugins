@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\util;
+namespace muqsit\invmenu\type\util;
 
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;

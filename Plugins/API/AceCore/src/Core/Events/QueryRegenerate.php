@@ -4,9 +4,9 @@ namespace Core\Events;
 
 use Core\Core;
 use pocketmine\event\Listener;
-use pocketmine\event\player\cheat\PlayerCheatEvent;
+use pocketmine\event\server\QueryRegenerateEvent;
 
-class PlayerCheat implements Listener {
+class QueryRegenerate implements Listener {
     /**
      * @var Core
      */
@@ -17,11 +17,7 @@ class PlayerCheat implements Listener {
         $this->plugin->getServer()->getPluginManager()->registerEvents($this, $this->plugin);
     }
 
-    /**
-     * @param PlayerCheatEvent $event
-     * @return void
-     */
-    public function onCheat(PlayerCheatEvent $event): void {
-        $event->setCancelled(true);
+    public function onQueryRegenerate(QueryRegenerateEvent $event): void {
+
     }
 }

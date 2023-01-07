@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\util\builder;
+namespace muqsit\invmenu\type\util\builder;
 
-use AceCore\src\muqsit\invmenu\type\BlockActorFixedInvMenuType;
-use AceCore\src\muqsit\invmenu\type\graphic\network\BlockInvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\BlockActorFixedInvMenuType;
+use muqsit\invmenu\type\graphic\network\BlockInvMenuGraphicNetworkTranslator;
 use LogicException;
 
 final class BlockActorFixedInvMenuTypeBuilder implements InvMenuTypeBuilder{

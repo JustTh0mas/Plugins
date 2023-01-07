@@ -1,6 +1,6 @@
 <?php
 
-namespace AceCore\src\Core\Utils;
+namespace Core\Utils;
 
 use pocketmine\utils\TextFormat as TF;
 

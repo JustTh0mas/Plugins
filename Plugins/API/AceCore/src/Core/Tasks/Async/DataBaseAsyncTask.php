@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\Tasks\Async;
+namespace Core\Tasks\Async;
 
-use AceCore\src\Core\Core;
+use Core\Core;
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
 

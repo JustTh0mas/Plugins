@@ -1,10 +1,10 @@
 <?php
 
-namespace AceCore\src\CreateServer\Async;
+namespace CreateServer\Async;
 
-use AceCore\src\Core\Utils\Copy;
-use AceCore\src\Core\Utils\Network;
-use AceCore\src\CreateServer\CreateServer;
+use Core\Utils\Copy;
+use Core\Utils\Network;
+use CreateServer\CreateServer;
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
 use pocketmine\utils\Config;

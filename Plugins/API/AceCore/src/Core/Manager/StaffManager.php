@@ -1,9 +1,12 @@
 <?php
 
-namespace AceCore\src\Core\Manager;
+namespace Core\Manager;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
+use Core\AcePlayer;
+use Core\Core;
+use pocketmine\item\enchantment\EnchantmentInstance;
+use pocketmine\item\enchantment\VanillaEnchantments;
+use pocketmine\item\ItemFactory;
 use pocketmine\item\VanillaItems;
 use pocketmine\network\mcpe\convert\SkinAdapterSingleton;
 use pocketmine\network\mcpe\protocol\PlayerListPacket;
@@ -16,13 +19,12 @@ class StaffManager {
      * @var array|string[]
      */
     public array $itemsName = [
-        "TELEPORT" => TF::YELLOW . "Téléportation Random" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Click" . TF::WHITE . ")",
-        "GAME" => TF::YELLOW . "Serveur" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Click" . TF::WHITE . ")",
-        "VANISH" => TF::YELLOW . "Vanish" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Click" . TF::WHITE . ")",
-        "LEAVE" => TF::YELLOW . "Quitter" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Click" . TF::WHITE . ")",
-        "FREEZE" => TF::YELLOW . "Freeze" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Taper le joueur" . TF::WHITE . ")",
-        "KICK" => TF::YELLOW . "Kick" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Taper le joueur" . TF::WHITE . ")",
-        "BAN" => TF::YELLOW . "Ban" . "\n" . TF::WHITE .  "(" . TF::AQUA . "Taper le joueur" . TF::WHITE . ")",
+        "TELEPORT" => TF::YELLOW . "Téléportation aléatoire" . TF::GRAY .  "(Clique droit)",
+        "INFORMATIONS" => TF::AQUA . "Informations" . TF::GRAY .  "(Clique droit)",
+        "LOGS_SANCTIONS" => TF::YELLOW . "Historique sanctions" . TF::GRAY .  "(Clique droit)",
+        "ANTI_KB" => TF::YELLOW . "Anti-KB",
+        "FREEZE" => TF::YELLOW . "Geler le joueur" . TF::GRAY .  "(Clique droit)",
+        "GAME" => TF::GREEN . "Changer de serveur",
     ];
 
     /**
@@ -47,22 +49,22 @@ class StaffManager {
         foreach ($this->plugin->getServer()->getOnlinePlayers() as $players) {
             $players->hidePlayer($player);
         }
-        $teleport = VanillaItems::BLAZE_ROD()->setCustomName($this->itemsName["TELEPORT"]);
-        $game = VanillaItems::CLOCK()->setCustomName($this->itemsName["GAME"]);
-        $vanish = VanillaItems::LIME_DYE()->setCustomName($this->itemsName["VANISH"]);
-        $freeze = VanillaItems::DIAMOND()->setCustomName($this->itemsName["FREEZE"]);
-        $kick = VanillaItems::STICK()->setCustomName($this->itemsName["KICK"]);
-        $ban = VanillaItems::BONE()->setCustomName($this->itemsName["BAN"]);
-        $leave = VanillaItems::REDSTONE_DUST()->setCustomName($this->itemsName["LEAVE"]);
+        $teleport = VanillaItems::COMPASS()->setCustomName($this->itemsName["TELEPORT"]);
+        $info = VanillaItems::PAPER()->setCustomName($this->itemsName["GAME"]);
+        $history = VanillaItems::BOOK();
+        $history->addEnchantment(new EnchantmentInstance(VanillaEnchantments::UNBREAKING()));
+        $history->setCustomName($this->itemsName["VANISH"]);
+        $anti_kb = VanillaItems::STICK()->setCustomName($this->itemsName["ANTI_KB"]);
+        $server = VanillaItems::CLOCK()->setCustomName($this->itemsName["GAME"]);
+        $freeze = ItemFactory::getInstance()->get(79)->setCustomName($this->itemsName["FREEZE"]);
         $player->getInventory()->clearAll();
         $player->getArmorInventory()->clearAll();
         $player->getInventory()->setItem(0, $teleport);
-        $player->getInventory()->setItem(2, $game);
-        $player->getInventory()->setItem(3, $vanish);
-        $player->getInventory()->setItem(4, $freeze);
-        $player->getInventory()->setItem(5, $kick);
-        $player->getInventory()->setItem(6, $ban);
-        $player->getInventory()->setItem(8, $leave);
+        $player->getInventory()->setItem(1, $info);
+        $player->getInventory()->setItem(2, $history);
+        $player->getInventory()->setItem(3, $anti_kb);
+        $player->getInventory()->setItem(4, $server);
+        $player->getInventory()->setItem(8, $freeze);
     }
 
     /**

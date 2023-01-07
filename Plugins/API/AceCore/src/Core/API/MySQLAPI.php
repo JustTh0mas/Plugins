@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Tasks\Async\DataBaseAsyncTask;
+use Core\Core;
+use Core\Tasks\Async\DataBaseAsyncTask;
 
 class MySQLAPI {
     const HOST = "127.0.0.1";
@@ -36,6 +36,7 @@ class MySQLAPI {
         $MySQL->query("CREATE TABLE IF NOT EXISTS economy (name TEXT, money INT, token INT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS ban (id INT, name TEXT, modo TEXT, ip TEXT, uuid TEXT, time_sec TEXT, reason TEXT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS mute (name LONGTEXT, time LONGTEXT)");
+        $MySQL->query("CREATE TABLE IF NOT EXISTS logs_sanctions (name TEXT, sanction TEXT, raison TEXT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS staff (name LONGTEXT, vanish TEXT, inventory LONGTEXT, armor LONGTEXT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS settings (name TEXT, private_message TEXT, friend_request TEXT, party_request TEXT, see_players TEXT, particle_mod INT)");
         $MySQL->query("CREATE TABLE IF NOT EXISTS cosmetics (name TEXT, nick TEXT, gadgets TEXT, skins TEXT, capes TEXT, pets TEXT, particles TEXT, tags TEXT, kdmessages TEXT, buy LONGTEXT)");

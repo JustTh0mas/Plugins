@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu;
+namespace muqsit\invmenu;
 
-use AceCore\src\muqsit\invmenu\inventory\SharedInvMenuSynchronizer;
-use AceCore\src\muqsit\invmenu\session\InvMenuInfo;
-use AceCore\src\muqsit\invmenu\session\network\PlayerNetwork;
-use AceCore\src\muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
-use AceCore\src\muqsit\invmenu\transaction\InvMenuTransaction;
-use AceCore\src\muqsit\invmenu\transaction\InvMenuTransactionResult;
-use AceCore\src\muqsit\invmenu\transaction\SimpleInvMenuTransaction;
-use AceCore\src\muqsit\invmenu\type\InvMenuType;
-use AceCore\src\muqsit\invmenu\type\InvMenuTypeIds;
+use muqsit\invmenu\inventory\SharedInvMenuSynchronizer;
+use muqsit\invmenu\session\InvMenuInfo;
+use muqsit\invmenu\session\network\PlayerNetwork;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
+use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\InvMenuTransactionResult;
+use muqsit\invmenu\transaction\SimpleInvMenuTransaction;
+use muqsit\invmenu\type\InvMenuType;
+use muqsit\invmenu\type\InvMenuTypeIds;
 use Closure;
 use LogicException;
 use pocketmine\inventory\Inventory;

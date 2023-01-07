@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\session\network;
+namespace muqsit\invmenu\session\network;
 
-use AceCore\src\muqsit\invmenu\session\InvMenuInfo;
-use AceCore\src\muqsit\invmenu\session\network\handler\PlayerNetworkHandler;
-use AceCore\src\muqsit\invmenu\session\PlayerSession;
+use muqsit\invmenu\session\InvMenuInfo;
+use muqsit\invmenu\session\network\handler\PlayerNetworkHandler;
+use muqsit\invmenu\session\PlayerSession;
 use Closure;
 use InvalidArgumentException;
 use pocketmine\block\inventory\BlockInventory;

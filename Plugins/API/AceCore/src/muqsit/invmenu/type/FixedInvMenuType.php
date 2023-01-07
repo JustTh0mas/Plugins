@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type;
+namespace muqsit\invmenu\type;
 
 /**
  * An InvMenuType with a fixed inventory size.

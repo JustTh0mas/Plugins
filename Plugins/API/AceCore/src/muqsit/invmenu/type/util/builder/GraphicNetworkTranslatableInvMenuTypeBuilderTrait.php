@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\util\builder;
+namespace muqsit\invmenu\type\util\builder;
 
-use AceCore\src\muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
-use AceCore\src\muqsit\invmenu\type\graphic\network\MultiInvMenuGraphicNetworkTranslator;
-use AceCore\src\muqsit\invmenu\type\graphic\network\WindowTypeInvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\graphic\network\MultiInvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\graphic\network\WindowTypeInvMenuGraphicNetworkTranslator;
 
 trait GraphicNetworkTranslatableInvMenuTypeBuilderTrait{
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\Tasks;
+namespace Core\Tasks;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
+use Core\AcePlayer;
+use Core\Core;
 use pocketmine\scheduler\Task;
 
 class SocketReadTask extends Task {

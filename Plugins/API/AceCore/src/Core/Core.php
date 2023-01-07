@@ -1,30 +1,30 @@
 <?php
 
-namespace AceCore\src\Core;
+namespace Core;
 
-use AceCore\src\Core\API\API;
-use AceCore\src\Core\API\BanAPI;
-use AceCore\src\Core\API\CosmeticsAPI;
-use AceCore\src\Core\API\EconomyAPI;
-use AceCore\src\Core\API\GamblerAPI;
-use AceCore\src\Core\API\MuteAPI;
-use AceCore\src\Core\API\MySQLAPI;
-use AceCore\src\Core\API\NetworkAPI;
-use AceCore\src\Core\API\RequestAPI;
-use AceCore\src\Core\API\ServerAPI;
-use AceCore\src\Core\API\SettingsAPI;
-use AceCore\src\Core\API\StaffAPI;
-use AceCore\src\Core\API\VerifAPI;
-use AceCore\src\Core\Commands\Staff\StaffCommand;
-use AceCore\src\Core\Events\DataPacketReceive;
-use AceCore\src\Core\Events\DataPacketSend;
-use AceCore\src\Core\Events\PlayerCheat;
-use AceCore\src\Core\Events\PlayerCreation;
-use AceCore\src\Core\Events\PlayerJoin;
-use AceCore\src\Core\Events\PlayerKick;
-use AceCore\src\Core\Events\PlayerQuit;
-use AceCore\src\Core\Utils\Socket;
+use Core\API\API;
+use Core\API\BanAPI;
+use Core\API\CosmeticsAPI;
+use Core\API\EconomyAPI;
+use Core\API\GamblerAPI;
+use Core\API\MuteAPI;
+use Core\API\MySQLAPI;
+use Core\API\NetworkAPI;
+use Core\API\RequestAPI;
+use Core\API\ServerAPI;
+use Core\API\SettingsAPI;
+use Core\API\StaffAPI;
+use Core\API\VerifAPI;
+use Core\Commands\Staff\StaffCommand;
+use Core\Events\DataPacketReceive;
+use Core\Events\DataPacketSend;
+use Core\Events\PlayerCheat;
+use Core\Events\PlayerCreation;
+use Core\Events\PlayerJoin;
+use Core\Events\PlayerKick;
+use Core\Events\PlayerQuit;
 use Core\Events\PlayerLogin;
+use Core\Utils\Socket;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase {

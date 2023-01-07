@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\util\builder;
+namespace muqsit\invmenu\type\util\builder;
 
 trait AnimationDurationInvMenuTypeBuilderTrait{
 

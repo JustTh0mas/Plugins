@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
+use Core\AcePlayer;
+use Core\Core;
 
 class GamblerAPI {
     /**

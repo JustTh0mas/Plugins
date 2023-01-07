@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\util;
+namespace muqsit\invmenu\type\util;
 
-use AceCore\src\muqsit\invmenu\type\util\builder\BlockActorFixedInvMenuTypeBuilder;
-use AceCore\src\muqsit\invmenu\type\util\builder\BlockFixedInvMenuTypeBuilder;
-use AceCore\src\muqsit\invmenu\type\util\builder\DoublePairableBlockActorFixedInvMenuTypeBuilder;
+use muqsit\invmenu\type\util\builder\BlockActorFixedInvMenuTypeBuilder;
+use muqsit\invmenu\type\util\builder\BlockFixedInvMenuTypeBuilder;
+use muqsit\invmenu\type\util\builder\DoublePairableBlockActorFixedInvMenuTypeBuilder;
 
 final class InvMenuTypeBuilders{
 

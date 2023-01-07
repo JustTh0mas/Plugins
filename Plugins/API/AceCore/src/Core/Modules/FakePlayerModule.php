@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\Modules;
+namespace Core\Modules;
 
-use AceCore\src\Core\AcePlayer;
+use Core\AcePlayer;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Skin;
 use pocketmine\math\Vector3;

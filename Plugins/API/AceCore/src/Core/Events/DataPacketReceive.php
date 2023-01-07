@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\Events;
+namespace Core\Events;
 
-use AceCore\src\Core\Core;
+use Core\Core;
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\NetworkStackLatencyPacket;

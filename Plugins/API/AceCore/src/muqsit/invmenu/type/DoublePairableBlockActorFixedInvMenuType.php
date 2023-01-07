@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type;
+namespace muqsit\invmenu\type;
 
-use AceCore\src\muqsit\invmenu\inventory\InvMenuInventory;
-use AceCore\src\muqsit\invmenu\InvMenu;
-use AceCore\src\muqsit\invmenu\type\graphic\BlockActorInvMenuGraphic;
-use AceCore\src\muqsit\invmenu\type\graphic\InvMenuGraphic;
-use AceCore\src\muqsit\invmenu\type\graphic\MultiBlockInvMenuGraphic;
-use AceCore\src\muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
-use AceCore\src\muqsit\invmenu\type\util\InvMenuTypeHelper;
+use muqsit\invmenu\inventory\InvMenuInventory;
+use muqsit\invmenu\InvMenu;
+use muqsit\invmenu\type\graphic\BlockActorInvMenuGraphic;
+use muqsit\invmenu\type\graphic\InvMenuGraphic;
+use muqsit\invmenu\type\graphic\MultiBlockInvMenuGraphic;
+use muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
+use muqsit\invmenu\type\util\InvMenuTypeHelper;
 use pocketmine\block\Block;
 use pocketmine\block\tile\Chest;
 use pocketmine\inventory\Inventory;

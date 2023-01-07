@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\Utils;
+namespace Core\Utils;
 
-use AceCore\src\Core\Core;
-use AceCore\src\CreateServer\CreateServer;
+use Core\Core;
+use CreateServer\CreateServer;
 use pocketmine\utils\TextFormat as TF;
 
 class Network {

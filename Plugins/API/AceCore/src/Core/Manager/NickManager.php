@@ -1,10 +1,10 @@
 <?php
 
-namespace AceCore\src\Core\Manager;
+namespace Core\Manager;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Utils\Cosmetics;
+use Core\AcePlayer;
+use Core\Core;
+use Core\Utils\Cosmetics;
 
 class NickManager {
     /**

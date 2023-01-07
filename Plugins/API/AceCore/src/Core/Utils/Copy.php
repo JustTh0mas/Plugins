@@ -1,6 +1,6 @@
 <?php
 
-namespace AceCore\src\Core\Utils;
+namespace Core\Utils;
 
 class Copy {
     /**

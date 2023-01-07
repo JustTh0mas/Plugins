@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu;
+namespace muqsit\invmenu;
 
-use AceCore\src\muqsit\invmenu\session\PlayerManager;
-use AceCore\src\muqsit\invmenu\type\InvMenuTypeRegistry;
+use muqsit\invmenu\session\PlayerManager;
+use muqsit\invmenu\type\InvMenuTypeRegistry;
 use InvalidArgumentException;
 use LogicException;
 use pocketmine\plugin\Plugin;

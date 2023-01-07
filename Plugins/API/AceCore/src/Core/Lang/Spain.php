@@ -1,8 +1,8 @@
 <?php
 
-namespace AceCore\src\Core\Lang;
+namespace Core\Lang;
 
-use AceCore\src\Core\Prefix;
+use Core\Prefix;
 use pocketmine\utils\TextFormat as TF;
 
 class Spain

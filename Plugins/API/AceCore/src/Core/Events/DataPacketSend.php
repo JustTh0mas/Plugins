@@ -1,9 +1,9 @@
 <?php
 
-namespace AceCore\src\Core\Events;
+namespace Core\Events;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
+use Core\AcePlayer;
+use Core\Core;
 use pocketmine\entity\Attribute;
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketSendEvent;

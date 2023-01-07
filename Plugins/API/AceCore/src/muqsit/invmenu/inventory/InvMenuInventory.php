@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\inventory;
+namespace muqsit\invmenu\inventory;
 
 use pocketmine\block\inventory\BlockInventory;
 use pocketmine\inventory\SimpleInventory;

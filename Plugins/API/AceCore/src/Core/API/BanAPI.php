@@ -1,10 +1,10 @@
 <?php
 
-namespace AceCore\src\Core\API;
+namespace Core\API;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Prefix;
+use Core\AcePlayer;
+use Core\Core;
+use Core\Prefix;
 
 class BanAPI {
     /**

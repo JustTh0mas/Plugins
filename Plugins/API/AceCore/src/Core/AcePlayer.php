@@ -1,11 +1,11 @@
 <?php
 
-namespace AceCore\src\Core;
+namespace Core;
 
-use AceCore\src\Core\Lang\Deutch;
-use AceCore\src\Core\Lang\English;
-use AceCore\src\Core\Lang\French;
-use AceCore\src\Core\Lang\Spain;
+use Core\Lang\Deutch;
+use Core\Lang\English;
+use Core\Lang\French;
+use Core\Lang\Spain;
 use pocketmine\entity\Location;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\NetworkSession;

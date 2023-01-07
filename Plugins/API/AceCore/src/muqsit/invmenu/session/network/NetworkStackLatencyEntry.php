@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\session\network;
+namespace muqsit\invmenu\session\network;
 
 use Closure;
 

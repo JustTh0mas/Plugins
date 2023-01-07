@@ -1,10 +1,10 @@
 <?php
 
-namespace AceCore\src\Core\Events;
+namespace Core\Events;
 
-use AceCore\src\Core\AcePlayer;
-use AceCore\src\Core\Core;
-use AceCore\src\Core\Prefix;
+use Core\AcePlayer;
+use Core\Core;
+use Core\Prefix;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\TextFormat as TF;

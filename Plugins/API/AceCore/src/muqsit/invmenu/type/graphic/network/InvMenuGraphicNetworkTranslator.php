@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\type\graphic\network;
+namespace muqsit\invmenu\type\graphic\network;
 
-use AceCore\src\muqsit\invmenu\session\InvMenuInfo;
-use AceCore\src\muqsit\invmenu\session\PlayerSession;
+use muqsit\invmenu\session\InvMenuInfo;
+use muqsit\invmenu\session\PlayerSession;
 use pocketmine\network\mcpe\protocol\ContainerOpenPacket;
 
 interface InvMenuGraphicNetworkTranslator{

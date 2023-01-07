@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace AceCore\src\muqsit\invmenu\inventory;
+namespace muqsit\invmenu\inventory;
 
-use AceCore\src\muqsit\invmenu\InvMenu;
+use muqsit\invmenu\InvMenu;
 use pocketmine\inventory\Inventory;
 
 final class SharedInvMenuSynchronizer{

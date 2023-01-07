@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace AceCore\src\Core\Form;
+namespace Core\Form;
 
 use pocketmine\form\FormValidationException;
 
