@@ -22,6 +22,6 @@ class PlayerCheat implements Listener {
      * @return void
      */
     public function onCheat(PlayerCheatEvent $event): void {
-        $event->setCancelled(true);
+        $event->setCancelled();
     }
 }

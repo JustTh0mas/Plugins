@@ -25,6 +25,7 @@ class StaffManager {
         "ANTI_KB" => TF::YELLOW . "Anti-KB",
         "FREEZE" => TF::YELLOW . "Geler le joueur" . TF::GRAY .  "(Clique droit)",
         "GAME" => TF::GREEN . "Changer de serveur",
+        "" => "",
     ];
 
     /**
