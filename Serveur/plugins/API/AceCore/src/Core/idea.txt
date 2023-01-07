@@ -1,0 +1,17 @@
+Scoreboard =
+        - AceCore -
+    Profil
+    > Grade: {rank}
+    > Money: {money}
+    > Token: {token}
+
+    Serveur
+    > Connectés: {player}
+    > Lobby: {num_lobby}
+
+        Discord
+    https://discord.gg/...
+
+
+
+
